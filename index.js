@@ -9,15 +9,15 @@ let orderItems = [];
 document.addEventListener('click', function (e) {
     if (e.target.dataset.add) {
         orderItems.push(changeOrder(parseInt(e.target.dataset.add)));
+        renderOrderSummary();
     } 
     else if (e.target.dataset.remove) {
         orderItems.splice(orderItems.indexOf(changeOrder(parseInt(e.target.dataset.remove))),1);
+        renderOrderSummary();
     }
     else if (e.target.id == 'comlete-order-btn' && orderItems.length > 0) {
         paymentModal.style.display = 'inline';
     }
-    
-    renderOrderSummary();
 })
 
 paymentModal.addEventListener('submit', function(e) {
